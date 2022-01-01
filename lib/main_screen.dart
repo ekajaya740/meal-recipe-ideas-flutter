@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_cards/swipe_cards.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:the_last_competition_apps/widgets/my_elevated_button.dart';
 import 'package:the_last_competition_apps/widgets/my_text.dart';
 
@@ -12,8 +13,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreen extends State<MainScreen> {
-  final bool _isDarkMode = false;
-  // final String _user;
+  var _selectedTab = _SelectedTab.home;
+
+  void _handleIndexChanged(int i) {
+    setState(() {
+      _selectedTab = _SelectedTab.values[i];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +30,53 @@ class _MainScreen extends State<MainScreen> {
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
-      actions: [
-        IconButton(
+    );
+
+    Widget _navBar = Padding(
+      padding: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        bottom: 24,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: "History",
+              tooltip: "",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.outdoor_grill),
+              label: "Cookbook",
+              tooltip: "",
+            ),
+          ],
+        ),
+      ),
+    );
+
+    Widget _fab = ClipRRect(
+      borderRadius: BorderRadius.circular(80),
+      child: Container(
+        color: Colors.redAccent,
+        padding: EdgeInsets.all(8),
+        child: FloatingActionButton(
           onPressed: () {},
-          icon: const Icon(
+          child: Icon(
             Icons.filter_alt,
           ),
         ),
-      ],
+      ),
     );
+
     return Scaffold(
       appBar: _appBar,
+      bottomNavigationBar: _navBar,
+      floatingActionButton: _fab,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       body: SafeArea(
         child: Column(
           children: [
@@ -54,75 +96,6 @@ class _MainScreen extends State<MainScreen> {
                 children: [
                   // Image.asset(),
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-              ),
-              child: _rectRadius(
-                child: Container(
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 8,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: MyElevatedButton(
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                // ignore: prefer_const_literals_to_create_immutables
-                                children: [
-                                  const Icon(
-                                    Icons.history,
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  const MyText(
-                                    "Swipe History",
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Expanded(
-                            child: MyElevatedButton(
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                // ignore: prefer_const_literals_to_create_immutables
-                                children: [
-                                  const Icon(
-                                    Icons.outdoor_grill,
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  const MyText(
-                                    "Cookbook",
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
               ),
             ),
           ],
@@ -152,3 +125,5 @@ class _MainScreen extends State<MainScreen> {
     );
   }
 }
+
+enum _SelectedTab { home }

@@ -13,10 +13,9 @@ class MyElevatedButton extends StatefulWidget {
           key: key,
         );
   @override
-  // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => _MyElevatedButton(
-        onPressed: this.onPressed,
-        child: this.child,
+        onPressed: onPressed,
+        child: child,
       );
 }
 
