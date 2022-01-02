@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'WhatsCook',
       theme: ThemeData(
+        cardColor: Colors.white,
         textTheme: GoogleFonts.latoTextTheme(
           Theme.of(context).textTheme,
         ),
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
           ),
           elevation: 0,
           selectedItemColor: Colors.redAccent,
-          showSelectedLabels: true,
+          unselectedItemColor: Colors.grey,
+          showSelectedLabels: false,
           showUnselectedLabels: false,
         ),
         primarySwatch: Colors.green,
