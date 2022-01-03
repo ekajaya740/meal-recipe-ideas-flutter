@@ -8,6 +8,9 @@ class MyText extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? color;
   final FontStyle? fontStyle;
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   const MyText(
     this.text, {
@@ -16,6 +19,9 @@ class MyText extends StatelessWidget {
     this.fontWeight,
     this.color,
     this.fontStyle,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
   }) : super(
           key: key,
         );
@@ -24,12 +30,15 @@ class MyText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign ?? TextAlign.start,
       style: GoogleFonts.montserrat(
         fontSize: fontSize ?? 12,
         fontWeight: fontWeight ?? FontWeight.w400,
         color: color ?? Colors.black,
         fontStyle: fontStyle ?? FontStyle.normal,
       ),
+      overflow: overflow,
+      maxLines: maxLines ?? 1,
     );
   }
 }
