@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.the_last_competition_apps">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="the_last_competition_apps"
+        android:label="pandemeals"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

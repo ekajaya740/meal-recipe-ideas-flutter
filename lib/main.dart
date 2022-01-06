@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
-      title: 'WhatsCook',
+      title: 'pandemeals',
       theme: ThemeData(
         cardColor: Colors.white,
         textTheme: GoogleFonts.latoTextTheme(

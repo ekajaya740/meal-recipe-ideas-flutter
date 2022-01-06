@@ -53,29 +53,30 @@ class _MainScreen extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     AppBar _appBar = AppBar(
-      title: const MyText("Discover Recipe",
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-          color: Colors.black,
-          // shadows: [
-          //   Shadow(
-          //       // bottomLeft
-          //       offset: Offset(-1.2, -1.2),
-          //       color: Colors.black),
-          //   Shadow(
-          //       // bottomRight
-          //       offset: Offset(1.2, -1.2),
-          //       color: Colors.black),
-          //   Shadow(
-          //       // topRight
-          //       offset: Offset(1.2, 1.2),
-          //       color: Colors.black),
-          //   Shadow(
-          //       // topLeft
-          //       offset: Offset(-1.2, 1.2),
-          //       color: Colors.black),
-          // ]
-          ),
+      title: const MyText(
+        "Discover Recipe",
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+        // shadows: [
+        //   Shadow(
+        //       // bottomLeft
+        //       offset: Offset(-1.2, -1.2),
+        //       color: Colors.black),
+        //   Shadow(
+        //       // bottomRight
+        //       offset: Offset(1.2, -1.2),
+        //       color: Colors.black),
+        //   Shadow(
+        //       // topRight
+        //       offset: Offset(1.2, 1.2),
+        //       color: Colors.black),
+        //   Shadow(
+        //       // topLeft
+        //       offset: Offset(-1.2, 1.2),
+        //       color: Colors.black),
+        // ]
+      ),
     );
 
     Widget _navBar = BottomNavigation(
@@ -249,12 +250,10 @@ class _MainScreen extends State<MainScreen> {
       // floatingActionButtonLocation:
       //     FloatingActionButtonLocation.miniCenterDocked,
       body: SafeArea(
-        child: Center(
-          child: Expanded(
-            child: DiscoverScreen(),
+        child: Center(child:
+            DiscoverScreen(),
           ),
         ),
-      ),
     );
   }
 }

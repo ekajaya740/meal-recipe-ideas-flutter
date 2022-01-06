@@ -33,11 +33,8 @@ class _DiscoverScreen extends State<DiscoverScreen> {
     const double _paddingTB = 10;
     const double _radius = 20;
 
-    double _opacity = 0;
-
     Widget _cardLoadingView() {
       return MealsCard(
-        // opacity: 0,
         horizontalSwipe: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,12 +179,7 @@ class _DiscoverScreen extends State<DiscoverScreen> {
             ),
           );
         },
-        onPositionChanged: (change) {
-          // setState(() {
-          _opacity += 10;
-          // });
-        },
-        // opacity: _opacity,
+        onPositionChanged: (change) {},
         onSwipeLeft: (finalPosition) {
           RandomMealProvider().swipeLeft(index, meal);
         },
@@ -257,7 +249,6 @@ class _DiscoverScreen extends State<DiscoverScreen> {
                 "Instructions",
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                
               ),
             ),
             Padding(
@@ -288,11 +279,9 @@ class _DiscoverScreen extends State<DiscoverScreen> {
           return _cardLoadingView();
         }
         if (!snapshot.hasData || snapshot.data == null) {
-          return const Expanded(
-            child: Center(
-              child: MyText(
-                "No data :(",
-              ),
+          return Center(
+            child: MyText(
+              "No data :(",
             ),
           );
         }
