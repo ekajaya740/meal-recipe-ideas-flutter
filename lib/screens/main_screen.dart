@@ -53,12 +53,29 @@ class _MainScreen extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     AppBar _appBar = AppBar(
-      title: const MyText(
-        "Discover Recipe",
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        color: Colors.white,
-      ),
+      title: const MyText("Discover Recipe",
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+          // shadows: [
+          //   Shadow(
+          //       // bottomLeft
+          //       offset: Offset(-1.2, -1.2),
+          //       color: Colors.black),
+          //   Shadow(
+          //       // bottomRight
+          //       offset: Offset(1.2, -1.2),
+          //       color: Colors.black),
+          //   Shadow(
+          //       // topRight
+          //       offset: Offset(1.2, 1.2),
+          //       color: Colors.black),
+          //   Shadow(
+          //       // topLeft
+          //       offset: Offset(-1.2, 1.2),
+          //       color: Colors.black),
+          // ]
+          ),
     );
 
     Widget _navBar = BottomNavigation(
@@ -225,22 +242,19 @@ class _MainScreen extends State<MainScreen> {
     //     ),
     //   );
     // }
-    final bool _isDiscover = true;
-    final double _isDiscoverPadding = _isDiscover ? 8 : 16;
     return Scaffold(
       appBar: _appBar,
-      bottomNavigationBar: _navBar,
+      // bottomNavigationBar: _navBar,
       // floatingActionButton: _fab,
       // floatingActionButtonLocation:
       //     FloatingActionButtonLocation.miniCenterDocked,
       body: SafeArea(
         child: Center(
-          child:  Expanded(
-              child: _isDiscover ? DiscoverScreen() : CookbookScreen(),
-            ),
+          child: Expanded(
+            child: DiscoverScreen(),
           ),
         ),
-      
+      ),
     );
   }
 }

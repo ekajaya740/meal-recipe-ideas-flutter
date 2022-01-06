@@ -41,7 +41,7 @@ class RandomMealProvider {
     List<dynamic> _mealList = _decode;
     for (int i = 0; i < _mealList.length; i++) {
       MealsModel _meal = MealsModel.fromJson(_mealList[i]);
-      _meals.add(_meal);
+      _meals.insert(0, _meal);
     }
 
     return _meals;
@@ -56,7 +56,8 @@ class RandomMealProvider {
 
   void _addMoreMealsToQueue(List<MealsModel> browsed) {
     List<MealsModel> mealsInList = mealsBrowsed.valueOrNull ?? <MealsModel>[];
-    mealsBrowsed.add(browsed + mealsInList);
+    print(mealsInList);
+    mealsBrowsed.add(mealsInList + browsed);
   }
 
   void _removeFromBrowsedMealsByIndex(int swipedOn) {

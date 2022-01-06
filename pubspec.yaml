@@ -43,6 +43,7 @@ dependencies:
   rxdart: ^0.27.3
   flutter_secure_storage: ^5.0.2
   flutter_secure_file_storage: ^0.0.2
+  url_launcher: ^6.0.17
 
 dev_dependencies:
   flutter_test:

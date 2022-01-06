@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_last_competition_apps/screens/main_screen.dart';
 
@@ -14,6 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       title: 'WhatsCook',
       theme: ThemeData(
@@ -39,7 +44,7 @@ class MyApp extends StatelessWidget {
           showUnselectedLabels: false,
         ),
         primarySwatch: Colors.green,
-        scaffoldBackgroundColor: Colors.redAccent,
+        scaffoldBackgroundColor: Colors.orange.shade100,
       ),
       home: const MainScreen(),
     );

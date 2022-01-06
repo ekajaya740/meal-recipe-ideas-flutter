@@ -104,7 +104,7 @@ class _DiscoverScreen extends State<DiscoverScreen> {
             ),
             SkeletonParagraph(
               style: const SkeletonParagraphStyle(
-                lines: 10,
+                lines: 14,
                 spacing: 2,
                 padding: EdgeInsets.only(
                   left: _paddingLR,
@@ -120,7 +120,7 @@ class _DiscoverScreen extends State<DiscoverScreen> {
     }
 
     Widget _hasDataView(int index, MealsModel meal) {
-      print(_opacity);
+      // print(_opacity);
       return MealsCard(
         onTap: () {
           Navigator.push(
@@ -131,6 +131,53 @@ class _DiscoverScreen extends State<DiscoverScreen> {
                 title: meal.strMeal!,
                 area: meal.strArea!,
                 category: meal.strCategory!,
+                ingredients: [
+                  meal.strIngredient1 ?? "",
+                  meal.strIngredient2 ?? "",
+                  meal.strIngredient3 ?? "",
+                  meal.strIngredient4 ?? "",
+                  meal.strIngredient5 ?? "",
+                  meal.strIngredient6 ?? "",
+                  meal.strIngredient7 ?? "",
+                  meal.strIngredient8 ?? "",
+                  meal.strIngredient9 ?? "",
+                  meal.strIngredient10 ?? "",
+                  meal.strIngredient11 ?? "",
+                  meal.strIngredient12 ?? "",
+                  meal.strIngredient13 ?? "",
+                  meal.strIngredient14 ?? "",
+                  meal.strIngredient15 ?? "",
+                  meal.strIngredient16 ?? "",
+                  meal.strIngredient17 ?? "",
+                  meal.strIngredient18 ?? "",
+                  meal.strIngredient19 ?? "",
+                  meal.strIngredient20 ?? "",
+                ],
+                measures: [
+                  meal.strMeasure1 ?? "",
+                  meal.strMeasure2 ?? "",
+                  meal.strMeasure3 ?? "",
+                  meal.strMeasure4 ?? "",
+                  meal.strMeasure5 ?? "",
+                  meal.strMeasure6 ?? "",
+                  meal.strMeasure7 ?? "",
+                  meal.strMeasure8 ?? "",
+                  meal.strMeasure9 ?? "",
+                  meal.strMeasure10 ?? "",
+                  meal.strMeasure11 ?? "",
+                  meal.strMeasure12 ?? "",
+                  meal.strMeasure13 ?? "",
+                  meal.strMeasure14 ?? "",
+                  meal.strMeasure15 ?? "",
+                  meal.strMeasure16 ?? "",
+                  meal.strMeasure17 ?? "",
+                  meal.strMeasure18 ?? "",
+                  meal.strMeasure19 ?? "",
+                  meal.strMeasure20 ?? "",
+                ],
+                instruction: meal.strInstructions!,
+                tags: meal.strTags ?? "",
+                strYoutube: meal.strYoutube ?? "",
               ),
             ),
           );
@@ -192,6 +239,7 @@ class _DiscoverScreen extends State<DiscoverScreen> {
                         meal.strMeal!,
                         color: Colors.white,
                         fontSize: 20,
+                        maxLines: 2,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -203,12 +251,13 @@ class _DiscoverScreen extends State<DiscoverScreen> {
               padding: EdgeInsets.only(
                 left: _paddingLR,
                 right: _paddingLR,
-                top: 4,
+                top: 10,
               ),
               child: MyText(
                 "Instructions",
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
+                
               ),
             ),
             Padding(
@@ -222,7 +271,7 @@ class _DiscoverScreen extends State<DiscoverScreen> {
                 meal.strInstructions!,
                 fontSize: 14,
                 overflow: TextOverflow.fade,
-                maxLines: 11,
+                maxLines: 16,
                 textAlign: TextAlign.justify,
                 fontWeight: FontWeight.w300,
               ),
@@ -240,23 +289,37 @@ class _DiscoverScreen extends State<DiscoverScreen> {
         }
         if (!snapshot.hasData || snapshot.data == null) {
           return const Expanded(
-            child: MyText(
-              "Empty",
+            child: Center(
+              child: MyText(
+                "No data :(",
+              ),
             ),
           );
         }
 
         final meals = snapshot.data ?? <MealsModel>[];
 
-        return Stack(
-          alignment: AlignmentDirectional.center,
-          children: meals.asMap().entries.map(
-            (entry) {
-              final index = entry.key;
-              final meal = entry.value;
-              return _hasDataView(index, meal);
-            },
-          ).toList(),
+        return SizedBox(
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: meals.asMap().entries.map(
+              (entry) {
+                final index = entry.key;
+                final meal = entry.value;
+
+                if (index - 1 >= 0) {
+                  double pr = index * 1.1;
+                  return Padding(
+                      padding: EdgeInsets.only(
+                        right: pr,
+                      ),
+                      child: _hasDataView(index, meal));
+                }
+
+                return _hasDataView(index, meal);
+              },
+            ).toList(),
+          ),
         );
       },
     );

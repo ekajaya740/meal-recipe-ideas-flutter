@@ -11,6 +11,8 @@ class MyText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final TextOverflow? overflow;
+  final bool? softWrap;
+  final List<Shadow>? shadows;
 
   const MyText(
     this.text, {
@@ -22,6 +24,8 @@ class MyText extends StatelessWidget {
     this.textAlign,
     this.maxLines,
     this.overflow,
+    this.softWrap,
+    this.shadows,
   }) : super(
           key: key,
         );
@@ -36,7 +40,9 @@ class MyText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.w400,
         color: color ?? Colors.black,
         fontStyle: fontStyle ?? FontStyle.normal,
+        shadows: shadows,
       ),
+      softWrap: softWrap ?? true,
       overflow: overflow,
       maxLines: maxLines ?? 1,
     );

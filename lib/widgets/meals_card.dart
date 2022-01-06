@@ -71,12 +71,16 @@ class _MealsCard extends State<MealsCard> {
             InkWell(
               onTap: onTap,
               child: Card(
+                elevation: .5,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    20,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(
+                      20,
+                    ),
+                    side: BorderSide(
+                      color: Colors.black12,
+                      width: .7,
+                    )),
                 child: child,
               ),
             ),
