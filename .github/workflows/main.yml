@@ -20,9 +20,14 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build apk
-      - uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      - name: upload artifects
+        uses: actions/upload-artifact@master
         with:
-          args: 'build/app/outputs/apk/release/app-release.apk'
+          name: android-app
+          path: build/app/outputs/apk/release
+      # - uses: skx/github-action-publish-binaries@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      #   with:
+      #     args: 'build/app/outputs/apk/release/app-release.apk'
 
