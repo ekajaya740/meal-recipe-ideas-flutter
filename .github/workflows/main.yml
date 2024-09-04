@@ -17,11 +17,12 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: 2.8.0
+          cache: true
       - run: flutter pub get
       - run: flutter build apk
       - uses: skx/github-action-publish-binaries@master
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+          ACTION_TOKEN: ${{ secrets.ACTION_TOKEN }}
         with:
           args: 'build/app/outputs/apk/release/app-release.apk'
 
